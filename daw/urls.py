@@ -7,6 +7,6 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include ('helpmapp.urls')),
+    url(r'', include ('practica_mvc.urls')),
 
 ]
