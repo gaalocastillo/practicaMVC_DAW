@@ -1,18 +1,17 @@
 from django.db import models
-from django.utils import timezone
+import datetime
 
 class Factura(models.Model):
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
+    numero_factura = models.CharField('auth.User', primary_key=True)
+    empresa = models.CharField(max_length=200)
+    fecha_pago = models.DateField(
+            default=date.today)
+    cantidad = models.DecimalField(max_digits=6,decimal_places=2)
+    estado = models.CharField(max_length=30)
 
-    def publish(self):
-        self.published_date = timezone.now()
+
+    def guardar(self):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.numero_factura
