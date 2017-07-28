@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
+
 from .forms import FacturaForm
 import psycopg2 as pg
 from .form import VoluntaryForm
@@ -22,6 +23,8 @@ def get_name(request):
         form = VoluntaryForm()
 
     return render(request, 'practica_mvc/voluntario.html', {'form': form})
+
+
 def show_name(request):
 	
 	return render(request,'practica_mvc/prueba.html')
@@ -58,5 +61,11 @@ def crear_factura(request):
     factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
     factura.save()
 
-def actualizar_factura(request):
-    return render(request,'practica_mvc/prueba.html')
+def actualizar_factura(request,num_factura):
+    if request.method=POST:
+        try:
+            factura= get_object_or_404(Factura,pk=num_factura)
+        except:
+            return render(request,'practica_mvc/error_page.html')
+
+        return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
