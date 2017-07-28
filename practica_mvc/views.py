@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import FacturaForm
-
+import pg
 from .form import VoluntaryForm
 
 def get_name(request):
