@@ -6,16 +6,16 @@ import datetime
 
 # Create your models here.
 IMP_CHOICES = (
-    ('0', 'pagado'),
-    ('1', 'pendiente'),
-    ('2', 'acumulado'),
+    ('0', 'Pagado'),
+    ('1', 'Pendiente'),
+    ('2', 'Acumulado'),
 
 )
 class FacturaForm(forms..ModelForm):
-    numero_factura = forms.CharField(max_length=16)
-    nombre_empresa = forms.CharField(max_length=50)
-    fecha_pago = forms.DateField(initial=datetime.date.today,input_formats=['%d/%m/%Y'])
-    cantidad = forms.DecimalField(min_value=0, decimal_places=2)
+    numero_factura = forms.CharField(max_length=16, label="Numero de la factura")
+    nombre_empresa = forms.CharField(max_length=50, label="Nombre de la empresa")
+    fecha_pago = forms.DateField(initial=datetime.date.today,input_formats=['%d/%m/%Y'], label="Fecha maxima de pago")
+    cantidad = forms.DecimalField(min_value=0, decimal_places=2, label="Cantidad facturada")
  
     estado = forms.ChoiceField(choices=IMP_CHOICES)
 
