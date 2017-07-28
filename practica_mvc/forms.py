@@ -12,7 +12,7 @@ IMP_CHOICES = (
 
 )
 class FacturaForm(forms..ModelForm):
-    numero_factura = forms.CharField(max_length=16)
+    numero_factura = forms.CharField(max_length=16, primary_key=True)
     nombre_empresa = forms.CharField(max_length=50)
     fecha_pago = forms.DateField(initial=datetime.date.today,input_formats=['%d/%m/%Y'])
     cantidad = forms.DecimalField(min_value=0, decimal_places=2)

@@ -2,7 +2,7 @@ from django.db import models
 import datetime
 
 class Factura(models.Model):
-    numero_factura = models.ForeignKey('auth.User')
+    numero_factura = models.CharField('auth.User', primary_key=True)
     empresa = models.CharField(max_length=200)
     fecha_pago = models.DateField(
             default=date.today)
