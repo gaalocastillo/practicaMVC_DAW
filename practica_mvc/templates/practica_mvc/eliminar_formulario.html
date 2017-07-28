@@ -6,30 +6,12 @@
 </head>
 <body>
 <h2>Eliminar factura</h2>
-<form>
+<form method="DELETE" action="/">
 	<label for="numero_factura">Número de la factura</label><br>
-	<input type="text" name="numero_factura" id="numero_factura">
+	<input type="text" name="numero_factura" id="numero_factura" value="{{factura.pk}}">
 	<br>
 	<br>
-	<label for="nombre_empresa">Nombre de la empresa</label><br>
-	<input type="text" name="nombre_empresa" id="nombre_empresa">
-	<br>
-	<br>
-	<label for="fecha_pago">Fecha maxima de pago</label><br>
-	<input type="date" name="fecha_pago" id="fecha_pago">
-	<br>
-	<br>
-	<label for="cantidad">Cantidad facturada</label><br>
-	<input type="number" name="cantidad" id="cantidad">
 
-	<br>
-	<br>
-	<select name="estado" id="estado">
-   		<option value="0" selected>Pagado</option>
-   		<option value="1">Pendiente </option>
-   		<option value="2">Acumulado</option>
-	</select>
-	<br>
 	<br>
 	<input type="submit" value="Eliminar" />
 
