@@ -47,3 +47,14 @@ def listar_facturas(request):
     conn.close()
      
     render(request, '.html', {'nombres': nombres})
+
+
+def crear_factura(request):
+    numFactura = request.GET['numero_factura']
+    nomEmpresa = request.GET['nombre_empresa']
+    fechaPago = request.GET['fecha_pago']
+    cant = request.GET['cantidad']
+
+    factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
+    factura.save()
+
