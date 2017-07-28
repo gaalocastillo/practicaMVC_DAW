@@ -37,3 +37,13 @@ def show_name(request):
 #     else:
 #         form = PostForm(instance=post)
 #     return render(request, 'blog/post_edit.html', {'form': form})
+
+def listar_facturas(request):
+    conn = pg.connect(dbname='practica_mvc_db',user='root',passwd='0000')
+     
+    consulta = 'select * from table;'
+    resultado = conn.query(consulta)
+    nombres  = [row[0] for row in resultado.fetchall()]
+    conn.close()
+     
+    render(request, '.html', {'nombres': nombres})
