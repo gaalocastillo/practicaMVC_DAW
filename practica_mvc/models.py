@@ -15,8 +15,8 @@ class Factura(models.Model):
     estado = models.CharField(default="acumulado",max_length=25,choices=IMP_CHOICES)
 
 
-    def guardar(self):
-        self.save()
+    def save(self,*args, **kwargs):
+        super(Factura,self).save(*args, **kwargs)
 
     def __str__(self):
         return self.numero_factura

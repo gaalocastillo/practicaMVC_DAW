@@ -5,7 +5,7 @@ urlpatterns = [
         url(r'^thanks/', views.show_name),
         url(r'^listar/', views.listar_facturas),
         # url(r'^facturas/lista/', views.listar_facturas),
-        # url(r'^facturas/(\d+)/$', views.actualizar_factura),
+        url(r'^facturas/edit/(\d+)/$', views.actualizar_factura),
 
 
     ]
