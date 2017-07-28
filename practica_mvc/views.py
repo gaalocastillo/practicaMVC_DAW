@@ -41,15 +41,7 @@ def show_name(request):
 #         form = PostForm(instance=post)
 #     return render(request, 'blog/post_edit.html', {'form': form})
 
-def listar_facturas(request):
-    conn = pg.connect(dbname='practica_mvc_db',user='root',passwd='0000')
-     
-    consulta = 'select * from table;'
-    resultado = conn.query(consulta)
-    nombres  = [row[0] for row in resultado.fetchall()]
-    conn.close()
-     
-    render(request, '.html', {'nombres': nombres})
+
 
 
 def crear_factura(request):
@@ -62,10 +54,11 @@ def crear_factura(request):
     factura.save()
 
 def actualizar_factura(request,num_factura):
-    if request.method=POST:
+    if request.method=='POST':
         try:
             factura= get_object_or_404(Factura,pk=num_factura)
         except:
             return render(request,'practica_mvc/error_page.html')
 
         return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
+    return render(request,'practica_mvc/error_page.html')
