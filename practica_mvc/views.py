@@ -62,3 +62,12 @@ def actualizar_factura(request,num_factura):
 
         return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
     return render(request,'practica_mvc/error_page.html')
+
+def eliminar_factura(request, num_factura):
+    if request.method == 'DELETE':
+        try:
+            factura  = get_object_or_404(Factura, pk = num_factura)
+        except:
+            return render(request, 'practica_mvc/error_page.html')
+        return render(request, 'practica_mvc/eliminar_formulario.html')
+    return render(request, 'practica_mvc/error_page.html')

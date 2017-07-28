@@ -9,5 +9,5 @@ urlpatterns = [
         # url(r'^facturas/lista/', views.listar_facturas),
         url(r'^facturas/edit/(?P<num_factura>\d+)/$', views.actualizar_factura),
 
-
+        url(r'^facturas/delete/(?P<num_factura>\d+)/$', views.eliminar_factura),
     ]
