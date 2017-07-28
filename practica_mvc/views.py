@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import FacturaForm
-import pg
+import psycopg2 as pg
 from .form import VoluntaryForm
 
 def get_name(request):
@@ -21,10 +21,10 @@ def get_name(request):
     else:
         form = VoluntaryForm()
 
-    return render(request, 'helpmapp/voluntario.html', {'form': form})
+    return render(request, 'practica_mvc/voluntario.html', {'form': form})
 def show_name(request):
 	
-	return render(request,'helpmapp/prueba.html')
+	return render(request,'practica_mvc/prueba.html')
 # def actualizar_factura(request, pk):
 #     factura = get_object_or_404(Factura, pk=pk)
 #     if request.method == "POST":
@@ -58,3 +58,5 @@ def crear_factura(request):
     factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
     factura.save()
 
+def actualizar_factura(request):
+    return render(request,'practica_mvc/prueba.html')
