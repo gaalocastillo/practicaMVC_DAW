@@ -49,13 +49,18 @@ def listar_facturas(request):
 
 def crear_factura(request):
     if request.method == 'POST':
+        print 'si es post'
         form = FacturaForm(request.POST)
         if form.is_valid():
+            print 'si es valid'
             factura = form.save(commit=False)
             factura.save()
-            redirect('')
+            return render(request, 'practica_mvc/formulario.html', {'form': form})
+        else:
+            print 'no es valid'
 
     else:
+        print 'no es post'
         form = FacturaForm()
 
     return render(request, 'practica_mvc/formulario.html', {'form': form})
