@@ -79,7 +79,18 @@ def actualizar_factura(request,num_factura):
 """
 
 def actualizar_factura(request, num_factura):
-    return render(request,'practica_mvc/error_page.html')
+
+        factura = get_object_or_404(Factura, pk=num_factura)
+        if request.method == "POST":
+            form = FacturaForm(request.POST)
+            if form.is_valid():
+                factura = Factura(numero_factura=num_factura,empresa=form.cleaned_data['nombre_empresa'],fecha_pago=form.cleaned_data['fecha_pago'],cantidad=form.cleaned_data['cantidad'],estado=form.cleaned_data['estado'])
+                factura.save()
+                return redirect('')
+        else:
+            form = FacturaForm()
+        return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
+
 
 def eliminar_factura(request,num_factura):
     

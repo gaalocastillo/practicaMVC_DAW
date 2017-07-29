@@ -5,13 +5,13 @@ import datetime
 
 # Create your models here.
 IMP_CHOICES = (
-    ('0', 'Pagado'),
-    ('1', 'Pendiente'),
-    ('2', 'Acumulado'),
+    ('Pagado', 'Pagado'),
+    ('Pendiente', 'Pendiente'),
+    ('Acumulado', 'Acumulado'),
 
 )
 
-class FacturaForm(forms.ModelForm):
+class FacturaForm(forms.Form):
 
     numero_factura = forms.CharField(max_length=16, label="Numero de la factura")
     nombre_empresa = forms.CharField(max_length=50, label="Nombre de la empresa")
