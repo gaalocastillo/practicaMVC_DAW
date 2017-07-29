@@ -5,21 +5,24 @@
 </head>
 <body>
 <h2>Registrar facutra</h2>
-<form>
+<form method="Post">
+{% csrf_token %}
+{{ form.errors }}
+{{ form.non_field_errors }}
 	<label for="numero_factura">Numero de la factura</label><br>
 	<input type="text" name="numero_factura" id="numero_factura">
 	<br>
 	<br>
-	<label for="nombre_empresa">Nombre de la empresa</label><br>
-	<input type="text" name="nombre_empresa" id="nombre_empresa">
+	<label for="empresa">Nombre de la empresa</label><br>
+	<input type="text" name="empresa" id="empresa">
 	<br>
 	<br>
-	<label for="fecha_pago">Fecha maxima de pago</label><br>
+	<label for="fecha_pago">Fecha maxima de pago yyyy-mm-dd</label><br>
 	<input type="date" name="fecha_pago" id="fecha_pago">
 	<br>
 	<br>
 	<label for="cantidad">Cantidad facturada</label><br>
-	<input type="number" name="cantidad" id="cantidad">
+	<input type="number" step="0.01" name="cantidad" id="cantidad">
 
 	<br>
 	<br>
@@ -32,6 +35,6 @@
 	<br>
 	<input type="submit" value="Upload" />
 
-</form>
+	</form>
 </body>
 </html>
