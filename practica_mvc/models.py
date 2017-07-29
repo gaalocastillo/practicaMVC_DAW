@@ -2,9 +2,9 @@ from django.db import models
 import datetime
 
 IMP_CHOICES = (
-    ('0', 'Pagado'),
-    ('1', 'Pendiente'),
-    ('2', 'Acumulado'),
+    ('Pagado', 'Pagado'),
+    ('Pendiente', 'Pendiente'),
+    ('Acumulado', 'Acumulado'),
 
 )
 class Factura(models.Model):

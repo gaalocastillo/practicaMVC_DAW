@@ -7,6 +7,7 @@
 <a href="/facturas/create/">Crear una factura</a>
 {% if facturas %}
 	<table class="egt">
+	<th><a value="crear" href="formulario.html">Crear una nueva factura</a></th>
 	  <tr>
 	    <th>numero de factura</th>
 	    <th>nombre empresa</th>
@@ -16,6 +17,7 @@
 	    <th>editar</th>
 	    <th>eliminar</th>
 	  </tr>
+
     {% for factura in facturas %}
     	<tr>
 		    <th>{{ factura.numero_factura}}</th>
@@ -23,16 +25,18 @@
 		    <th>{{ factura.fecha_pago }}</th>
 		    <th>{{ factura.cantidad }}</th>
 		    <th>{{ factura.estado }}</th>
-		    <th><a value="editar" href="facturas/editar/{{ factura.numero_factura}}">Editar</a></th>
+
+		    <th><a value="editar" href="facturas/edit/{{ factura.numero_factura}}/">Editar</a></th>
+
 		    <th><a value="eliminar" href="facturas/delete/{{ factura.numero_factura}}">Eliminar</a></th>
 	  	</tr>
-	  	<th><a value="crear" href="formulario.html">Crear</a></th>
+	  	
         
     {% endfor %}
     </table>
 	{% else %}
 	    <p>No hay facturas que listar!</p>
-	    <th><a value="crear" href="formulario.html">Crear</a></th>
+	    <th><a value="crear" href="formulario.html">Crear una nueva factura</a></th>
 
 	{% endif %}
 </body>
