@@ -48,17 +48,25 @@ def listar_facturas(request):
 
 
 def crear_factura(request):
-    numFactura = request.GET['numero_factura']
-    nomEmpresa = request.GET['nombre_empresa']
-    fechaPago = request.GET['fecha_pago']
-    cant = request.GET['cantidad']
+    if request.method == 'POST':
+        form = FacturaForm(request.POST)
+        if form.is_valid():
+            factura = form.save(commit=False)
+            factura.save()
+            redirect('')
 
-    factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
-    factura.save()
+    else:
+        form = FacturaForm()
+
+    return render(request, 'practica_mvc/formulario.html', {'form': form})
+
+
+"""def actualizar_factura(request,num_factura):
 
 '''
 
 def actualizar_factura(request,num_factura):
+
     if request.method=='POST':
         try:
             factura= get_object_or_404(Factura,pk=num_factura)
@@ -68,6 +76,8 @@ def actualizar_factura(request,num_factura):
         return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
     return render(request,'practica_mvc/error_page.html')
 '''
+"""
+
 def actualizar_factura(request, num_factura):
     return render(request,'practica_mvc/error_page.html')
 
@@ -77,5 +87,11 @@ def eliminar_factura(request,num_factura):
         
     return render(request, 'practica_mvc/listar_facturas.html')
 
-def principal(request):
-    return render(request, 'practica_mvc/eliminar_formulario.html')
+
+'''
+def eliminar_factura(request,num_factura):
+    
+    factura  = get_object_or_404(Factura, pk = num_factura).delete()
+        
+    return render(request, 'practica_mvc/listar_facturas.html')
+>>>>>>> 8b2247b959216ad7734df80b91286ad6feb55152
