@@ -91,4 +91,4 @@ def eliminar_factura(request,num_factura):
 
 def principal(request):
     return render(request, 'practica_mvc/eliminar_formulario.html')
-
+'''
