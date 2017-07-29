@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from .models import Factura
 from .forms import FacturaForm
@@ -95,8 +95,8 @@ def actualizar_factura(request, num_factura):
 def eliminar_factura(request,num_factura):
     
     factura  = get_object_or_404(Factura, pk = num_factura).delete()
-        
-    return render(request, 'practica_mvc/listar_facturas.html')
+
+    return HttpResponseRedirect('/')
 
 
 '''
