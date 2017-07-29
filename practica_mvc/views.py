@@ -52,7 +52,7 @@ def crear_factura(request):
 
     factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
     factura.save()
-
+'''
 def actualizar_factura(request,num_factura):
     if request.method=='POST':
         try:
@@ -62,12 +62,18 @@ def actualizar_factura(request,num_factura):
 
         return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
     return render(request,'practica_mvc/error_page.html')
+def actualizar_factura(request, num_factura):
+    return render(request,'practica_mvc/error_page.html')
+    '''
 
-def eliminar_factura(request, num_factura):
+def eliminar_factura(request,num_factura):
     if request.method == 'DELETE':
         try:
-            factura  = get_object_or_404(Factura, pk = num_factura)
+            factura  = get_object_or_404(Factura, pk = num_factura).delete()
         except:
             return render(request, 'practica_mvc/error_page.html')
         return render(request, 'practica_mvc/eliminar_formulario.html')
     return render(request, 'practica_mvc/error_page.html')
+
+def principal(request):
+    return render(request, 'practica_mvc/eliminar_formulario.html')
