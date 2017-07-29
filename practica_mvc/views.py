@@ -94,4 +94,4 @@ def eliminar_factura(request,num_factura):
     factura  = get_object_or_404(Factura, pk = num_factura).delete()
         
     return render(request, 'practica_mvc/listar_facturas.html')
->>>>>>> 8b2247b959216ad7734df80b91286ad6feb55152
+'''
