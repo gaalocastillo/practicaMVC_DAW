@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
-
+from .models import Factura
 from .forms import FacturaForm
 import psycopg2 as pg
 from .form import VoluntaryForm
@@ -41,7 +41,10 @@ def show_name(request):
 #         form = PostForm(instance=post)
 #     return render(request, 'blog/post_edit.html', {'form': form})
 
-
+def listar_facturas(request):
+    facturas =  Factura.objects.all()
+         
+    return render(request, 'practica_mvc/listar_facturas.html', {'facturas': facturas})
 
 
 def crear_factura(request):
@@ -57,8 +60,18 @@ def crear_factura(request):
 
     return render(request, 'practica_mvc/formulario.html', {'form': form})
 
+<<<<<<< HEAD
+=======
+    factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
+    factura.save()
+<<<<<<< HEAD
+>>>>>>> 7fc466fe797057943cc02018348561748a090248
 
+"""def actualizar_factura(request,num_factura):
+=======
+'''
 def actualizar_factura(request,num_factura):
+>>>>>>> 8cdfd5e1d516462f8eff2172cb04bb7c2fa71835
     if request.method=='POST':
         try:
             factura= get_object_or_404(Factura,pk=num_factura)
@@ -67,3 +80,24 @@ def actualizar_factura(request,num_factura):
 
         return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
     return render(request,'practica_mvc/error_page.html')
+<<<<<<< HEAD
+"""
+def actualizar_factura(request,num_factura):
+    return render(request,'practica_mvc/error_page.html')
+=======
+def actualizar_factura(request, num_factura):
+    return render(request,'practica_mvc/error_page.html')
+    '''
+
+def eliminar_factura(request,num_factura):
+    if request.method == 'DELETE':
+        try:
+            factura  = get_object_or_404(Factura, pk = num_factura).delete()
+        except:
+            return render(request, 'practica_mvc/error_page.html')
+        return render(request, 'practica_mvc/eliminar_formulario.html')
+    return render(request, 'practica_mvc/error_page.html')
+
+def principal(request):
+    return render(request, 'practica_mvc/eliminar_formulario.html')
+>>>>>>> 8cdfd5e1d516462f8eff2172cb04bb7c2fa71835
