@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% if facturas %}
+	<table class="egt">
+	  <tr>
+	    <th>numero de factura</th>
+	    <th>nombre empresa</th>
+	    <th>fecha de pago</th>
+	    <th>cantidad</th>
+	    <th>estado</th>
+	    <th>editar</th>
+	    <th>eliminar</th>
+	  </tr>
+    {% for factura in facturas %}
+    	<tr>
+		    <th>{{ factura.numero_factura}}</th>
+		    <th>{{ factura.empresa }}</th>
+		    <th>{{ factura.fecha_pago }}</th>
+		    <th>{{ factura.cantidad }}</th>
+		    <th>{{ factura.estado }}</th>
+		    <th><input type="submit" value="editar"></th>
+		    <th><input type="submit" value="eliminar"></th>
+	  	</tr>
+        
+    {% endfor %}
+    </table>
+	{% else %}
+	    <p>No ha facturas</p>
+	{% endif %}
+</body>
+</html>
