@@ -6,12 +6,11 @@
 </head>
 <body>
 <h2>Editar factura</h2>
-<form method="post" action="/facturas/edit/{{factura.numero_factura}}/">
+<form method="post" action="/facturas/edit/{{factura.pk}}/">
 {% csrf_token %}
-	<label for="numero_factura">Numero de la factura</label><br>
-	<input type="text" name="numero_factura" id="numero_factura" placeholder="{{factura.pk}}">
-	<br>
-	<br>
+{{form.errors}}
+{{form.non_field_errors}}
+	
 	<label for="nombre_empresa">Nombre de la empresa</label><br>
 	<input type="text" name="nombre_empresa" id="nombre_empresa" placeholder="{{factura.empresa}}">
 	<br>

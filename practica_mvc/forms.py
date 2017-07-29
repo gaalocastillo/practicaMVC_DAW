@@ -11,7 +11,9 @@ IMP_CHOICES = (
 
 )
 
-class FacturaForm(forms.Form):
+class FacturaForm(forms.ModeñForm):
+
+
 
     numero_factura = forms.CharField(max_length=16, label="Numero de la factura")
     nombre_empresa = forms.CharField(max_length=50, label="Nombre de la empresa")

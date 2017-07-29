@@ -88,7 +88,7 @@ def actualizar_factura(request, num_factura):
                 factura.save()
                 return redirect('')
         else:
-            form = FacturaForm()
+                return redirect('')
         return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
 
 
