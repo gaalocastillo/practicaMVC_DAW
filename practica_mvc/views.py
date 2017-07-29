@@ -45,13 +45,18 @@ def show_name(request):
 
 
 def crear_factura(request):
-    numFactura = request.GET['numero_factura']
-    nomEmpresa = request.GET['nombre_empresa']
-    fechaPago = request.GET['fecha_pago']
-    cant = request.GET['cantidad']
+    if request.method == 'POST':
+        form = FacturaForm(request.POST)
+        if form.is_valid():
+            factura = form.save(commit=False)
+            factura.save()
+            redirect('')
 
-    factura = Factura(numero_factura=numFactura, nombre_empresa=nomEmpresa, fecha_pago=fechaPago, cantidad=cant)
-    factura.save()
+    else:
+        form = FacturaForm()
+
+    return render(request, 'practica_mvc/formulario.html', {'form': form})
+
 
 def actualizar_factura(request,num_factura):
     if request.method=='POST':
