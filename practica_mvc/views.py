@@ -92,3 +92,8 @@ def eliminar_factura(request,num_factura):
 def principal(request):
     return render(request, 'practica_mvc/eliminar_formulario.html')
 '''
+def eliminar_factura(request,num_factura):
+    
+    factura  = get_object_or_404(Factura, pk = num_factura).delete()
+        
+    return render(request, 'practica_mvc/listar_facturas.html')

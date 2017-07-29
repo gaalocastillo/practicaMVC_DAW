@@ -23,13 +23,13 @@
 		    <th>{{ factura.cantidad }}</th>
 		    <th>{{ factura.estado }}</th>
 		    <th><input type="submit" value="editar"></th>
-		    <th><input type="submit" value="eliminar"></th>
+		    <th><a value="eliminar" href="facturas/delete/{{ factura.numero_factura}}">Eliminar</a></th>
 	  	</tr>
         
     {% endfor %}
     </table>
 	{% else %}
-	    <p>No ha facturas</p>
+	    <p>No hay facturas que listar!</p>
 	{% endif %}
 </body>
 </html>
