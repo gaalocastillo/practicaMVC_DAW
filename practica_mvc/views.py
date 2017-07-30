@@ -89,11 +89,11 @@ def actualizar_factura(request, num_factura):
         if request.method == "POST":
             form = FacturaForm(request.POST)
             if form.is_valid():
-                factura = Factura(numero_factura=num_factura,empresa=form.cleaned_data['nombre_empresa'],fecha_pago=form.cleaned_data['fecha_pago'],cantidad=form.cleaned_data['cantidad'],estado=form.cleaned_data['estado'])
+                factura = Factura(numero_factura=num_factura,empresa=form.cleaned_data['empresa'],fecha_pago=form.cleaned_data['fecha_pago'],cantidad=form.cleaned_data['cantidad'],estado=form.cleaned_data['estado'])
                 factura.save()
                 return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
         else:
-                return redirect('')
+                form = FacturaForm()
         return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
 
 
