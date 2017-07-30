@@ -49,42 +49,27 @@ def listar_facturas(request):
 
 def crear_factura(request):
     if request.method == 'POST':
-        print 'si es post'
+        print ('si es post')
         form = FacturaForm(request.POST)
         if form.is_valid():
-            print 'si es valid'
+            print ('si es valid')
             factura = form.save(commit=False)
             factura.save()
             return render(request, 'practica_mvc/formulario.html', {'form': form})
         else:
-            print 'no es valid'
+            print ('no es valido')
 
     else:
-        print 'no es post'
+        print ('no es post')
         form = FacturaForm()
 
     return render(request, 'practica_mvc/formulario.html', {'form': form})
 
 
-"""def actualizar_factura(request,num_factura):
-
-'''
-
-def actualizar_factura(request,num_factura):
-
-    if request.method=='POST':
-        try:
-            factura= get_object_or_404(Factura,pk=num_factura)
-        except:
-            return render(request,'practica_mvc/error_page.html')
-
-        return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
-    return render(request,'practica_mvc/error_page.html')
-'''
-"""
 
 def actualizar_factura(request, num_factura):
 
+<<<<<<< HEAD
         factura = get_object_or_404(Factura, pk=num_factura)
         if request.method == "POST":
             form = FacturaForm(request.POST)
@@ -95,6 +80,18 @@ def actualizar_factura(request, num_factura):
         else:
                 form = FacturaForm()
         return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
+=======
+    factura = get_object_or_404(Factura, pk=num_factura)
+    if request.method == "POST":
+        form = FacturaForm(request.POST,instance=factura)
+        if form.is_valid():
+            factura = form.save(commit=False)
+            factura.save()
+            return redirect('/')
+    else:
+            form=FacturaForm(instance=factura)
+    return render(request, 'practica_mvc/editar_formulario.html', {'form': form})
+>>>>>>> 3322775ca2cbe85bc372ed75d86d9d699a03b216
 
 
 def eliminar_factura(request,num_factura):

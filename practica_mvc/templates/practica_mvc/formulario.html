@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-<h2>Registrar facutra</h2>
+<h2>Registrar factura</h2>
 <form method="Post">
 {% csrf_token %}
 {{ form.errors }}
@@ -28,7 +28,11 @@
 	<br>
 	<select name="estado" id="estado">
    		<option value="Pagado" selected>Pagado</option>
+<<<<<<< HEAD
    		<option value="Pendiente">Pendiente</option>
+=======
+   		<option value="Pendiente">Pendiente </option>
+>>>>>>> 3322775ca2cbe85bc372ed75d86d9d699a03b216
    		<option value="Acumulado">Acumulado</option>
 	</select>
 	<br>
@@ -36,5 +40,6 @@
 	<input type="submit" value="Upload" />
 
 	</form>
+	<a href="{% url 'practica_mvc.views.listar_facturas' %}" >Home</a>
 </body>
 </html>
