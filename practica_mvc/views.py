@@ -49,52 +49,36 @@ def listar_facturas(request):
 
 def crear_factura(request):
     if request.method == 'POST':
-        print 'si es post'
+        print ('si es post')
         form = FacturaForm(request.POST)
         if form.is_valid():
-            print 'si es valid'
+            print ('si es valid')
             factura = form.save(commit=False)
             factura.save()
             return render(request, 'practica_mvc/formulario.html', {'form': form})
         else:
-            print 'no es valid'
+            print ('no es valido')
 
     else:
-        print 'no es post'
+        print ('no es post')
         form = FacturaForm()
 
     return render(request, 'practica_mvc/formulario.html', {'form': form})
 
 
-"""def actualizar_factura(request,num_factura):
-
-'''
-
-def actualizar_factura(request,num_factura):
-
-    if request.method=='POST':
-        try:
-            factura= get_object_or_404(Factura,pk=num_factura)
-        except:
-            return render(request,'practica_mvc/error_page.html')
-
-        return render(request,'practica_mvc/editar_formulario.html',{'factura':factura})
-    return render(request,'practica_mvc/error_page.html')
-'''
-"""
 
 def actualizar_factura(request, num_factura):
 
-        factura = get_object_or_404(Factura, pk=num_factura)
-        if request.method == "POST":
-            form = FacturaForm(request.POST)
-            if form.is_valid():
-                factura = Factura(numero_factura=num_factura,empresa=form.cleaned_data['nombre_empresa'],fecha_pago=form.cleaned_data['fecha_pago'],cantidad=form.cleaned_data['cantidad'],estado=form.cleaned_data['estado'])
-                factura.save()
-                return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
-        else:
-                return redirect('')
-        return render(request, 'practica_mvc/editar_formulario.html', {'factura': factura})
+    factura = get_object_or_404(Factura, pk=num_factura)
+    if request.method == "POST":
+        form = FacturaForm(request.POST,instance=factura)
+        if form.is_valid():
+            factura = form.save(commit=False)
+            factura.save()
+            return redirect('/')
+    else:
+            form=FacturaForm(instance=factura)
+    return render(request, 'practica_mvc/editar_formulario.html', {'form': form})
 
 
 def eliminar_factura(request,num_factura):
