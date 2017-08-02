@@ -14,7 +14,7 @@ urlpatterns = [
         url(r'^facturas/create/$', views.crear_factura,name='crear_factura'),
 
 
-        url(r'^facturas/listar_recibos', views.listar_recibos,name='listar_recibos'),
+        url(r'^recibos/listar_recibos', views.listar_recibos,name='listar_recibos'),
         url(r'^recibos/edit/(?P<num_recibo>\d+)/$', views.actualizar_recibo,name='actualizar_recibo'),
         url(r'^recibos/delete/(?P<num_recibo>\d+)/$', views.eliminar_recibo,name='eliminar_recibo'),
         url(r'^recibos/create/$', views.crear_recibo,name='crear_recibo'),
