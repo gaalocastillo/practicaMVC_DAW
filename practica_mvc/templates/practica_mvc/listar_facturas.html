@@ -25,9 +25,9 @@
 		    <th>{{ factura.cantidad }}</th>
 		    <th>{{ factura.estado }}</th>
 
-		    <th><a value="editar" href="{% url 'practica_mvc.views.actualizar_recibo' num_factura=factura.pk %}">Editar</a></th>
+		    <th><a value="editar" href="{% url 'practica_mvc.views.actualizar_factura' num_factura=factura.pk %}">Editar</a></th>
 
-		    <th><a value="eliminar" href="{% url 'practica_mvc.views.eliminar_recibo' num_factura=factura.pk %}">Eliminar</a></th>
+		    <th><a value="eliminar" href="{% url 'practica_mvc.views.eliminar_factura' num_factura=factura.pk %}">Eliminar</a></th>
 	  	</tr>
 	  	
         
