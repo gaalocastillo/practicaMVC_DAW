@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="/recibos/create/">Crear un Recibo</a>
+{% if facturas %}
+	<table class="egt">
+	  <tr>
+	    <th>numero de Recibo</th>
+	    <th>fecha de pago</th>
+	    <th>nombre empresa</th>
+	    <th>concepto</th>
+	    <th>cantidad</th>
+	    <th>editar</th>
+	    <th>eliminar</th>
+	  </tr>
+
+    {% for recibo in recibos %}
+    	<tr>
+		    <th>{{ recibo.numero_recibo}}</th>
+		    <th>{{ recibo.fecha_pago }}</th>
+		    <th>{{ recibo.nombre }}</th>
+		    <th>{{ recibo.concepto }}</th>
+		    <th>{{ recibo.cantidad }}</th>
+
+		    <th><a value="editar" href="recibos/edit/{{ recibo.numero_recibo}}/">Editar</a></th>
+
+		    <th><a value="eliminar" href="recibos/delete/{{ recibo.numero_recibo}}">Eliminar</a></th>
+	  	</tr>
+	  	
+        
+    {% endfor %}
+    </table>
+	{% else %}
+	    <p>No hay recibos que listar!</p>
+
+
+	{% endif %}
+</body>
+</html>
