@@ -69,10 +69,6 @@ def crear_factura(request):
 
 def actualizar_factura(request, num_factura):
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f4ad462bbcb944b482607dcf1b829db9b660f0f7
     factura = get_object_or_404(Factura, pk=num_factura)
     if request.method == "POST":
         form = FacturaForm(request.POST,instance=factura)
