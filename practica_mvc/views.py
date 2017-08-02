@@ -131,7 +131,7 @@ def actualizar_recibo(request, num_recibo):
 
 def eliminar_recibo(request,num_recibo):
     
-    recibo  = get_object_or_404(Factura, pk = num_recibo).delete()
+    recibo  = get_object_or_404(Recibo, pk = num_recibo).delete()
 
     return HttpResponseRedirect('/')
 
