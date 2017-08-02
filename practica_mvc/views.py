@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
-from .models import Factura
+from .models import Factura,Recibo
 from .forms import FacturaForm
 import psycopg2 as pg
 from .form import VoluntaryForm
@@ -82,6 +82,51 @@ def actualizar_factura(request, num_factura):
 
 
 def eliminar_factura(request,num_factura):
+    
+    factura  = get_object_or_404(Factura, pk = num_factura).delete()
+
+    return HttpResponseRedirect('/')
+
+def listar_recibos(request):
+    facturas =  Recibo.objects.all()
+         
+    return render(request, 'practica_mvc/listar_recibos.html', {'recibos': recibos})
+
+def crear_recibo(request):
+    if request.method == 'POST':
+        print ('si es post')
+        form = ReciboForm(request.POST)
+        if form.is_valid():
+            print ('si es valid')
+            recibo = form.save(commit=False)
+            recibo.save()
+            return render(request, 'practica_mvc/crear_recibo.html', {'form': form})
+        else:
+            print ('no es valido')
+
+    else:
+        print ('no es post')
+        form = ReciboForm()
+
+    return render(request, 'practica_mvc/crear_recibo.html', {'form': form})
+
+
+
+def actualizar_recibo(request, num_factura):
+
+    factura = get_object_or_404(Factura, pk=num_factura)
+    if request.method == "POST":
+        form = FacturaForm(request.POST,instance=factura)
+        if form.is_valid():
+            factura = form.save(commit=False)
+            factura.save()
+            return redirect('/')
+    else:
+            form=FacturaForm(instance=factura)
+    return render(request, 'practica_mvc/editar_formulario.html', {'form': form})
+
+
+def eliminar_recibo(request,num_factura):
     
     factura  = get_object_or_404(Factura, pk = num_factura).delete()
 
