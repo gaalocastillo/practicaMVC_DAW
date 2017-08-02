@@ -22,4 +22,19 @@ class Factura(models.Model):
 
     def __str__(self):
         return self.numero_factura
+
+
+class Recibo(models.Model):
+    numero_recibo = models.CharField('nun recibo', primary_key=True,max_length=16)
+    fecha_pago = models.DateField(default=datetime.date.today)
+    nombre = models.CharField(default=" ",max_length=200)
+    concepto = models.CharField(default=" ",max_length=200)
+    cantidad = models.DecimalField(default=0,max_digits=6,decimal_places=2)
+    
+
+    def save(self,*args, **kwargs):
+        super(Recibo,self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.numero_recibo
     
