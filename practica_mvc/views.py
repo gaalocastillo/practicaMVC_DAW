@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
-from .models import Factura
-from .forms import FacturaForm
+from .models import Factura,Recibo
+from .forms import FacturaForm,ReciboForm
 import psycopg2 as pg
 from .form import VoluntaryForm
 
@@ -27,27 +27,12 @@ def get_name(request):
 def mostrar_principal(request):
     return render(request,'practica_mvc/index.html')
 
-def listar_facturas(request):
-    return render(request,'practica_mvc/listar_facturas.html')
 
-def listar_recibes(request):
-    return render(request,'practica_mvc/listar_recibos.html')
 
 def show_name(request):
 	
 	return render(request,'practica_mvc/prueba.html')
-# def actualizar_factura(request, pk):
-#     factura = get_object_or_404(Factura, pk=pk)
-#     if request.method == "POST":
-#         form = FacturaForm(request.POST, instance=post)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.author = request.user
-#             post.save()
-#             return redirect('post_detail', pk=post.pk)
-#     else:
-#         form = PostForm(instance=post)
-#     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 def listar_facturas(request):
     facturas =  Factura.objects.all()
@@ -96,12 +81,11 @@ def eliminar_factura(request,num_factura):
     return HttpResponseRedirect('/')
 
 
-<<<<<<< HEAD
-=======
+
 
 
 def listar_recibos(request):
-    facturas =  Recibo.objects.all()
+    recibos =  Recibo.objects.all()
          
     return render(request, 'practica_mvc/listar_recibos.html', {'recibos': recibos})
 
@@ -146,11 +130,5 @@ def eliminar_recibo(request,num_recibo):
     return HttpResponseRedirect('/')
 
 
->>>>>>> 62bbf8ddf5ddbd53256a7f342418a73fdd72fe75
-'''
-def eliminar_factura(request,num_factura):
-    
-    factura  = get_object_or_404(Factura, pk = num_factura).delete()
-        
-    return render(request, 'practica_mvc/listar_facturas.html')
-'''
+
+
