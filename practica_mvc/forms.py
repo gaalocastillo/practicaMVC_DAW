@@ -1,6 +1,7 @@
 
 from django import forms
 from .models import Factura
+from .models import Recibo
 import datetime
 
 # Create your models here.

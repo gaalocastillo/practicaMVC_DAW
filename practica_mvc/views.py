@@ -82,8 +82,6 @@ def eliminar_factura(request,num_factura):
 
 
 
-
-
 def listar_recibos(request):
     recibos =  Recibo.objects.all()
          
@@ -128,7 +126,5 @@ def eliminar_recibo(request,num_recibo):
     recibo  = get_object_or_404(Recibo, pk = num_recibo).delete()
 
     return HttpResponseRedirect('/')
-
-
 
 

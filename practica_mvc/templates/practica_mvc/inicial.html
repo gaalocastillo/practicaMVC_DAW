@@ -50,12 +50,11 @@
             </div>
             
             <div id="navbar" class="navbar-collapse collapse" >
-              <img src="{% static 'img/practica_mvc.jpg' %}" class="header-icon" alt="practica_mvc-logo">
               <ul class="nav navbar-nav navbar-right ">
 
-                <li><a id = "hola" href="{% url 'practica_mvc.views.mostrar_indice' %}"> Inicio </a></li>
-                <li ><a href="{% url 'practica_mvc.views.listar_facturas' %}" > Ver Facturas</a></li>
-                <li><a href="{% url 'practica_mvc.views.listar_recibos' %}"> Estadísticas</a></li>
+                <li><a href="{% url 'practica_mvc.views.mostrar_principal' %}"> Inicio </a></li>
+                <li ><a href="{% url 'practica_mvc.views.listar_facturas' %}" > Facturas</a></li>
+                <li><a href="{% url 'practica_mvc.views.listar_recibos' %}"> Recibos</a></li>
                
               </ul>
               
