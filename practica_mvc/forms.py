@@ -1,6 +1,7 @@
 
 from django import forms
 from .models import Factura
+from .models import Recibo
 import datetime
 
 # Create your models here.
@@ -17,6 +18,12 @@ class FacturaForm(forms.ModelForm):
 	class Meta:
 		model = Factura
 		fields = ('numero_factura', 'empresa', 'fecha_pago', 'cantidad', 'estado')
+
+class ReciboForm(forms.ModelForm):
+	class Meta:
+		model = Recibo
+		fields = ('numero_recibo', 'fecha_pago', 'nombre', 'concepto', 'cantidad')
+
 
 	'''
 	numero_factura = forms.CharField(max_length=16, label="Numero de la factura")

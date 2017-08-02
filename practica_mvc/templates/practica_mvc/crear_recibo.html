@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h2>Registrar recibo</h2>
+<form method="Post">
+{% csrf_token %}
+{{ form.errors }}
+{{ form.non_field_errors }}
+	<label for="numero_recibo">Numero del recibo</label><br>
+	<input type="text" name="numero_recibo" id="numero_recibo">
+	<br>
+	<br>
+	<label for="fecha_pago">Fecha maxima de pago yyyy-mm-dd</label><br>
+	<input type="date" name="fecha_pago" id="fecha_pago">
+	<br>
+	<br>
+	<label for="nombre">Nombre de quien recibe</label><br>
+	<input type="text" name="nombre" id="nombre">
+	<br>
+	<br>
+	<label for="concepto">Concepto del recibo</label><br>
+	<input type="text" name="concepto" id="concepto">
+	<br>
+	<br>
+	<label for="cantidad">Cantidad del recibo</label><br>
+	<input type="number" step="0.01" name="cantidad" id="cantidad">
+	<br>
+	<br>
+	<input type="submit" value="Upload" />
+	</form>
+	<a href="{% url 'practica_mvc.views.listar_recibos' %}" >Home</a>
+</body>
+</html>

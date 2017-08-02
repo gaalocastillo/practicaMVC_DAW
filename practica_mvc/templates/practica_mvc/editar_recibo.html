@@ -1,0 +1,12 @@
+{% extends 'practica_mvc/base_recibo.html' %}
+
+
+
+
+    {% block content %}
+        <h1>Actualizar recibo</h1>
+        <form method="POST" class="recibo-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Actualizar</button>
+        </form>
+    {% endblock %}

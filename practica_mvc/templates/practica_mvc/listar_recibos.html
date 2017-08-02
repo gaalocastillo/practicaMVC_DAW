@@ -1,0 +1,48 @@
+{% extends "practica_mvc/inicial.html" %}
+
+{% load staticfiles %}
+
+{% block title %} Recibos{% endblock %}
+
+
+{% block body %}
+<a href="{% url 'practica_mvc.views.crear_recibo' %}">Crear un Recibo</a>
+{% if facturas %}
+	<table class="egt">
+	  <tr>
+	    <th>numero de Recibo</th>
+	    <th>fecha de pago</th>
+	    <th>nombre empresa</th>
+	    <th>concepto</th>
+	    <th>cantidad</th>
+	    <th>editar</th>
+	    <th>eliminar</th>
+	  </tr>
+
+    {% for recibo in recibos %}
+    	<tr>
+		    <th>{{ recibo.numero_recibo}}</th>
+		    <th>{{ recibo.fecha_pago }}</th>
+		    <th>{{ recibo.nombre }}</th>
+		    <th>{{ recibo.concepto }}</th>
+		    <th>{{ recibo.cantidad }}</th>
+
+		    <th><a value="editar" href="{% url 'practica_mvc.views.actualizar_recibo' num_recibo=recibo.pk %}">Editar</a></th>
+
+		    <th><a value="eliminar" href="{% url 'practica_mvc.views.eliminar_recibo' num_recibo=recibo.pk %}">Eliminar</a></th>
+	  	</tr>
+	  	
+        
+    {% endfor %}
+    </table>
+	{% else %}
+	    <p>No hay recibos que listar!</p>
+
+
+	{% endif %}
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/index.js' %}"></script>
+
+{% endblock %}

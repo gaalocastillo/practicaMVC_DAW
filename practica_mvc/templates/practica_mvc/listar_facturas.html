@@ -4,10 +4,9 @@
 	<title></title>
 </head>
 <body>
-<a href="/facturas/create/">Crear una factura</a>
+<a href="{% url 'practica_mvc.views.crear_factura' %}">Crear una factura</a>
 {% if facturas %}
 	<table class="egt">
-	
 	  <tr>
 	    <th>numero de factura</th>
 	    <th>nombre empresa</th>
@@ -26,9 +25,9 @@
 		    <th>{{ factura.cantidad }}</th>
 		    <th>{{ factura.estado }}</th>
 
-		    <th><a value="editar" href="facturas/edit/{{ factura.numero_factura}}/">Editar</a></th>
+		    <th><a value="editar" href="{% url 'practica_mvc.views.actualizar_recibo' num_factura=factura.pk %}">Editar</a></th>
 
-		    <th><a value="eliminar" href="facturas/delete/{{ factura.numero_factura}}">Eliminar</a></th>
+		    <th><a value="eliminar" href="{% url 'practica_mvc.views.eliminar_recibo' num_factura=factura.pk %}">Eliminar</a></th>
 	  	</tr>
 	  	
         
