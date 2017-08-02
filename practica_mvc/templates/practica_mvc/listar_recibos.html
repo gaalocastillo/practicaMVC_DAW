@@ -6,7 +6,7 @@
 
 
 {% block body %}
-<a href="/recibos/create/">Crear un Recibo</a>
+<a href="{% url 'practica_mvc.views.crear_recibo' %}">Crear un Recibo</a>
 {% if facturas %}
 	<table class="egt">
 	  <tr>
@@ -27,9 +27,9 @@
 		    <th>{{ recibo.concepto }}</th>
 		    <th>{{ recibo.cantidad }}</th>
 
-		    <th><a value="editar" href="recibos/edit/{{ recibo.numero_recibo}}/">Editar</a></th>
+		    <th><a value="editar" href="{% url 'practica_mvc.views.actualizar_recibo' num_recibo=recibo.pk %}">Editar</a></th>
 
-		    <th><a value="eliminar" href="recibos/delete/{{ recibo.numero_recibo}}">Eliminar</a></th>
+		    <th><a value="eliminar" href="{% url 'practica_mvc.views.eliminar_recibo' num_recibo=recibo.pk %}">Eliminar</a></th>
 	  	</tr>
 	  	
         
