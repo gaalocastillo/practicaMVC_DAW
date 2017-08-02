@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends "practica_mvc/inicial.html" %}
+
+{% load staticfiles %}
+
+{% block title %} Recibos{% endblock %}
+
+
+{% block body %}
 <a href="/recibos/create/">Crear un Recibo</a>
 {% if facturas %}
 	<table class="egt">
@@ -38,5 +40,9 @@
 
 
 	{% endif %}
-</body>
-</html>
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/index.js' %}"></script>
+
+{% endblock %}

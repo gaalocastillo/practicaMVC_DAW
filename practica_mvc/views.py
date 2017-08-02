@@ -96,10 +96,6 @@ def eliminar_factura(request,num_factura):
     return HttpResponseRedirect('/')
 
 
-<<<<<<< HEAD
-=======
-
-
 def listar_recibos(request):
     facturas =  Recibo.objects.all()
          
@@ -146,7 +142,6 @@ def eliminar_recibo(request,num_recibo):
     return HttpResponseRedirect('/')
 
 
->>>>>>> 62bbf8ddf5ddbd53256a7f342418a73fdd72fe75
 '''
 def eliminar_factura(request,num_factura):
     
