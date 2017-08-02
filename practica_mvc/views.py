@@ -96,6 +96,57 @@ def eliminar_factura(request,num_factura):
     return HttpResponseRedirect('/')
 
 
+<<<<<<< HEAD
+=======
+
+
+def listar_recibos(request):
+    facturas =  Recibo.objects.all()
+         
+    return render(request, 'practica_mvc/listar_recibos.html', {'recibos': recibos})
+
+def crear_recibo(request):
+    if request.method == 'POST':
+        print ('si es post')
+        form = ReciboForm(request.POST)
+        if form.is_valid():
+            print ('si es valid')
+            recibo = form.save(commit=False)
+            recibo.save()
+            return render(request, 'practica_mvc/crear_recibo.html', {'form': form})
+        else:
+            print ('no es valido')
+
+    else:
+        print ('no es post')
+        form = ReciboForm()
+
+    return render(request, 'practica_mvc/crear_recibo.html', {'form': form})
+
+
+
+def actualizar_recibo(request, num_recibo):
+
+    recibo = get_object_or_404(Recibo, pk=num_recibo)
+    if request.method == "POST":
+        form = ReciboForm(request.POST,instance=recibo)
+        if form.is_valid():
+            recibo = form.save(commit=False)
+            recibo.save()
+            return redirect('/')
+    else:
+            form=ReciboForm(instance=recibo)
+    return render(request, 'practica_mvc/editar_recibo.html', {'form': form})
+
+
+def eliminar_recibo(request,num_recibo):
+    
+    recibo  = get_object_or_404(Recibo, pk = num_recibo).delete()
+
+    return HttpResponseRedirect('/')
+
+
+>>>>>>> 62bbf8ddf5ddbd53256a7f342418a73fdd72fe75
 '''
 def eliminar_factura(request,num_factura):
     
