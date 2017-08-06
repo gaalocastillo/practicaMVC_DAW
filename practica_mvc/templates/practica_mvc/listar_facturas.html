@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+
+{% extends "practica_mvc/inicial.html" %}
+
+{% load staticfiles %}
+
+{% block title %} Facturas{% endblock %}
+
+{% block body %}
+<div class="reserver"></div>
+<div class="reserver"></div>
 <a href="{% url 'practica_mvc.views.crear_factura' %}">Crear una factura</a>
 {% if facturas %}
 	<table class="egt">
@@ -38,5 +42,8 @@
 
 
 	{% endif %}
-</body>
-</html>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/index.js' %}"></script>
+
+{% endblock %}

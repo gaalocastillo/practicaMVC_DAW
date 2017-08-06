@@ -68,7 +68,7 @@ def actualizar_factura(request, num_factura):
         if form.is_valid():
             factura = form.save(commit=False)
             factura.save()
-            return redirect('/')
+            return redirect('/facturas/listar_facturas')
     else:
             form=FacturaForm(instance=factura)
     return render(request, 'practica_mvc/editar_formulario.html', {'form': form})
@@ -78,7 +78,7 @@ def eliminar_factura(request,num_factura):
     
     factura  = get_object_or_404(Factura, pk = num_factura).delete()
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/facturas/listar_facturas')
 
 
 
@@ -115,7 +115,7 @@ def actualizar_recibo(request, num_recibo):
         if form.is_valid():
             recibo = form.save(commit=False)
             recibo.save()
-            return redirect('/')
+            return redirect('/recibos/listar_recibos')
     else:
             form=ReciboForm(instance=recibo)
     return render(request, 'practica_mvc/editar_recibo.html', {'form': form})
@@ -125,6 +125,6 @@ def eliminar_recibo(request,num_recibo):
     
     recibo  = get_object_or_404(Recibo, pk = num_recibo).delete()
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/recibos/listar_recibos')
 
 
