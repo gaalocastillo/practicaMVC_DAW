@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 from . import views
 
-from daw.viewsets import FacturaViewSet, ReciboViewSet
+from .viewsets import FacturaViewSet, ReciboViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
