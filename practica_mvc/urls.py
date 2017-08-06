@@ -1,5 +1,17 @@
-from django.conf.urls import include, url
+
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+admin.autodiscover()
 from . import views
+
+from daw.viewsets import LibroViewSet, AutoViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'facturas', FacturaViewSet)
+router.register(r'recibos', ReciboViewSet)
+
+
 urlpatterns = [
         # url(r'^$', views.get_name),
         url(r'^$', views.mostrar_principal,name='index'),
