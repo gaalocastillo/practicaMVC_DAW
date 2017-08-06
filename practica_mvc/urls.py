@@ -1,5 +1,17 @@
-from django.conf.urls import include, url
+
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+admin.autodiscover()
 from . import views
+
+from daw.viewsets import FacturaViewSet, ReciboViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'facturas', FacturaViewSet)
+router.register(r'recibos', ReciboViewSet)
+
+
 urlpatterns = [
         # url(r'^$', views.get_name),
         url(r'^$', views.mostrar_principal,name='mostrar_principal'),
@@ -18,6 +30,8 @@ urlpatterns = [
         url(r'^recibos/edit/(?P<num_recibo>\d+)/$', views.actualizar_recibo,name='actualizar_recibo'),
         url(r'^recibos/delete/(?P<num_recibo>\d+)/$', views.eliminar_recibo,name='eliminar_recibo'),
         url(r'^recibos/create/$', views.crear_recibo,name='crear_recibo'),
+        url(r'^', include(router.urls)),
+        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 
     ]
