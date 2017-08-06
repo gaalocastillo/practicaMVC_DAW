@@ -30,6 +30,8 @@ urlpatterns = [
         url(r'^recibos/edit/(?P<num_recibo>\d+)/$', views.actualizar_recibo,name='actualizar_recibo'),
         url(r'^recibos/delete/(?P<num_recibo>\d+)/$', views.eliminar_recibo,name='eliminar_recibo'),
         url(r'^recibos/create/$', views.crear_recibo,name='crear_recibo'),
+        url(r'^', include(router.urls)),
+        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 
     ]
