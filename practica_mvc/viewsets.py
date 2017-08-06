@@ -1,13 +1,13 @@
-from .models import Factira, Recibo
-from .serializers import LibroSerializer, AutorSerializer
+from .models import Factura, Recibo
+from .serializers import FacturaSerializer, ReciboSerializer
 from rest_framework import viewsets
 
-class FacturaSerializer(viewsets.ModelViewSet):
+class FacturaViewSet(viewsets.ModelViewSet):
  
     serializer_class = FacturaSerializer
     queryset = Factura.objects.all()
 
-class ReciboSerializer(viewsets.ModelViewSet):
+class ReciboViewSet(viewsets.ModelViewSet):
  
     serializer_class = ReciboSerializer
     queryset = Recibo.objects.all()
