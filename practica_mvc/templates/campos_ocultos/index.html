@@ -8,8 +8,11 @@
 
 <body>
     <h1>Página 1</h1>
+
     <form action="/controlador1" method="post">
-    
+        {% csrf_token %}
+        {{ form.errors }}
+        {{ form.non_field_errors }}
         <div>
         
             <label for="name">Usuario:</label>
@@ -24,7 +27,7 @@
     
         <div class="button">
         
-            <button type="submit">Ingresar</button>
+            <a href="{% url 'practica_mvc.views.controlador1' %}" >Next</a>
             </div>
     </form>
 </body>

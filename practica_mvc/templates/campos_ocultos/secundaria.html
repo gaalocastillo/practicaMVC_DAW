@@ -10,16 +10,20 @@
     <h1>Página 2</h1>
     <div>
         <table>
+        {% if form %}
             <tr>
-                <td>Usuario: </td>
+                <td>Usuario: {{ form.name}}</td>
             </tr>
             <tr>
-                <td>Contraseña: </td>
+                <td>Contraseña: {{ form.password}}</td>
             </tr>
+        {% endif %}
         </table>
     </div>
     <form action="/controlador2" method="post">
-    
+        {% csrf_token %}
+        {{ form.errors }}
+        {{ form.non_field_errors }}
         <div>
         
             <label for="valor1">Valor 1:</label>
@@ -34,7 +38,7 @@
     
         <div class="button">
         
-            <button type="submit">Calcular</button>
+            <a href="{% url 'practica_mvc.views.controlador2' %}" >Next</a>
             </div>
     </form>
 </body>
