@@ -33,5 +33,5 @@ urlpatterns = [
 
 
         #URLS para practica de campos ocultos
-
+        url(r'^login/create/$', views.controlador1,name='controlador1'),
     ]
