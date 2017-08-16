@@ -24,8 +24,19 @@ def get_name(request):
 
     return render(request, 'practica_mvc/voluntario.html', {'form': form})
 
-def mostrar_principal(request):
-    return render(request,'practica_mvc/index.html')
+
+
+
+
+
+
+
+#COMENTANDO PARA PRACTICA DE CAMPOS OCULTOS
+#def mostrar_principal(request):
+#    return render(request,'practica_mvc/index.html')
+
+
+
 
 
 
@@ -128,3 +139,37 @@ def eliminar_recibo(request,num_recibo):
     return HttpResponseRedirect('/recibos/listar_recibos')
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+#VIEWS DE CAMPOS OCULTOS
+def mostrar_principal(request):
+    return render(request,'campos_ocultos/index.html')
+
+
+def controlador1(request):
+    if request.method == 'POST':
+        print ('Si es post')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            print ('Si es valid')
+            #recibo = form.save(commit=False)
+            #recibo.save()
+            return render(request, 'campos_ocultos/secundaria.html', {'form': form})
+        else:
+            print ('No es valido')
+
+    else:
+        print ('No es post')
+        form = LoginForm()
+
+    return render(request, 'campos_ocultos/secundaria.html', {'form': form})
