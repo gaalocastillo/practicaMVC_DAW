@@ -10,26 +10,30 @@
     <h1>Página 3</h1>
     <div>
         <table>
+            {% if form2 %}
+            {% csrf_token %}
+
             <tr>
-                <td>Usuario: </td>
+                <td>Usuario: {{ form2.name}}</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Contraseña: </td>
+                <td>Contraseña: {{ form2.password}}</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Valor 1: </td>
+                <td>Valor 1: {{ form2.valor1}}</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Valor 2: </td>
+                <td>Valor 2: {{ form2.valor2}}</td>
                 <td></td>
             </tr>
             <tr>
                 <td>Resultado: </td>
                 <td></td>
             </tr>
+            {% endif %}
         </table>
     </div>
 </body>

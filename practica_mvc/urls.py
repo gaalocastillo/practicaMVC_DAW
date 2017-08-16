@@ -33,7 +33,7 @@ urlpatterns = [
 
 
         #URLS para practica de campos ocultos
-        url(r'^login/second_view/$', views.controlador1,name='controlador1'),
-        url(r'^final/show/$', views.controlador1,name='controlador1'),
+        url(r'^login/show/$', views.controlador1,name='controlador1'),
+        url(r'^final/show2/$', views.controlador2,name='controlador2'),
 
     ]

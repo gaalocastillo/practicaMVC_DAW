@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from .models import Factura,Recibo
-from .forms import FacturaForm,ReciboForm
+from .forms import *
 import psycopg2 as pg
 from .form import VoluntaryForm
 
@@ -162,6 +162,7 @@ def controlador1(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             print ('Si es valid')
+            print(form)
             #recibo = form.save(commit=False)
             #recibo.save()
             return render(request, 'campos_ocultos/secundaria.html', {'form': form})
@@ -181,9 +182,10 @@ def controlador2(request):
         form = ValorForm(request.POST)
         if form.is_valid():
             print ('Si es valid')
+            print(form)
             #recibo = form.save(commit=False)
             #recibo.save()
-            return render(request, 'campos_ocultos/final.html', {'form': form})
+            return render(request, 'campos_ocultos/final.html', {'form2': form})
         else:
             print ('No es valido')
 
@@ -191,4 +193,4 @@ def controlador2(request):
         print ('No es post')
         form = ValorForm()
 
-    return render(request, 'campos_ocultos/final.html', {'form': form})
+    return render(request, 'campos_ocultos/final.html', {'form2': form})
