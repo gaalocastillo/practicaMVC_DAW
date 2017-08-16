@@ -173,3 +173,22 @@ def controlador1(request):
         form = LoginForm()
 
     return render(request, 'campos_ocultos/secundaria.html', {'form': form})
+
+
+def controlador2(request):
+    if request.method == 'POST':
+        print ('Si es post')
+        form = ValorForm(request.POST)
+        if form.is_valid():
+            print ('Si es valid')
+            #recibo = form.save(commit=False)
+            #recibo.save()
+            return render(request, 'campos_ocultos/final.html', {'form': form})
+        else:
+            print ('No es valido')
+
+    else:
+        print ('No es post')
+        form = ValorForm()
+
+    return render(request, 'campos_ocultos/final.html', {'form': form})
