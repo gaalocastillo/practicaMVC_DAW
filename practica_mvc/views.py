@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect
 from .models import Factura,Recibo
-from .forms import FacturaForm,ReciboForm
+from .forms import *
 import psycopg2 as pg
 from .form import VoluntaryForm
 
@@ -24,8 +24,19 @@ def get_name(request):
 
     return render(request, 'practica_mvc/voluntario.html', {'form': form})
 
-def mostrar_principal(request):
-    return render(request,'practica_mvc/index.html')
+
+
+
+
+
+
+
+#COMENTANDO PARA PRACTICA DE CAMPOS OCULTOS
+#def mostrar_principal(request):
+#    return render(request,'practica_mvc/index.html')
+
+
+
 
 
 
@@ -128,3 +139,58 @@ def eliminar_recibo(request,num_recibo):
     return HttpResponseRedirect('/recibos/listar_recibos')
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+#VIEWS DE CAMPOS OCULTOS
+def mostrar_principal(request):
+    return render(request,'campos_ocultos/index.html')
+
+
+def controlador1(request):
+    if request.method == 'POST':
+        print ('Si es post')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            print ('Si es valid')
+            print(form)
+            #recibo = form.save(commit=False)
+            #recibo.save()
+            return render(request, 'campos_ocultos/secundaria.html', {'form': form})
+        else:
+            print ('No es valido')
+
+    else:
+        print ('No es post')
+        form = LoginForm()
+
+    return render(request, 'campos_ocultos/secundaria.html', {'form': form})
+
+
+def controlador2(request):
+    if request.method == 'POST':
+        print ('Si es post')
+        form = ValorForm(request.POST)
+        if form.is_valid():
+            print ('Si es valid')
+            print(form)
+            #recibo = form.save(commit=False)
+            #recibo.save()
+            return render(request, 'campos_ocultos/final.html', {'form2': form})
+        else:
+            print ('No es valido')
+
+    else:
+        print ('No es post')
+        form = ValorForm()
+
+    return render(request, 'campos_ocultos/final.html', {'form2': form})

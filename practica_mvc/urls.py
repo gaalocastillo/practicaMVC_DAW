@@ -30,4 +30,10 @@ urlpatterns = [
         url(r'^recibos/create/$', views.crear_recibo,name='crear_recibo'),
         url(r'^', include(router.urls)),
         url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+
+        #URLS para practica de campos ocultos
+        url(r'^login/show/$', views.controlador1,name='controlador1'),
+        url(r'^final/show2/$', views.controlador2,name='controlador2'),
+
     ]
